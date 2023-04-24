@@ -2,7 +2,6 @@ var searchButton = document.getElementById('search-button');
 var userInput = document.getElementsByClassName('user-input');
 
 var weatherApi = '503191814aab7688ab7d586c6bfbd8b6';
-var userInput = '';
 
 function convertUserInput(event) {
     event.preventDefault();
