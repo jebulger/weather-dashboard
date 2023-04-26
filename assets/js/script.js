@@ -66,7 +66,6 @@ function historyToList() {
     }
     if (loadedSearchHistory) {
         loadedSearchHistory = JSON.parse(loadedSearchHistory);
-        console.log(loadedSearchHistory);
     } else {
         loadedSearchHistory = [];
     }
@@ -86,7 +85,6 @@ function historyToList() {
 // Function to perform an alternate search when the search history buttons are selected
 // Skips over the submit search and
 function altSearch(searchValue) {
-    console.log(searchValue);
     chosenCity = searchValue;
     getCoordinates();
 }
@@ -99,7 +97,6 @@ function submitSearch(event) {
         alert('You must enter a city name to search the weather data of that city, try again.');
         location.reload();
     } else {
-        console.log(chosenCity);
         var searchHistory = localStorage.getItem('city');
         if (searchHistory) {
             searchHistory = JSON.parse(searchHistory);
@@ -108,7 +105,6 @@ function submitSearch(event) {
         }
         searchHistory.push(chosenCity);
         localStorage.setItem('city', JSON.stringify(searchHistory));
-        console.log(localStorage);
         getCoordinates();
     }
 }
@@ -143,7 +139,6 @@ function getWeatherApi() {
     })
     .then(function (data) {
         weatherToday = data;
-        console.log('>>>> Weather Data >>>>', weatherToday);
     })
 
     fetch(currentForecastUrl)
@@ -152,7 +147,6 @@ function getWeatherApi() {
     })
     .then( function(data) {
         cityForecast = data;
-        console.log('>>>> 5-Day Forecast >>>>', cityForecast);
         renderDataToPage();
     })
 }
