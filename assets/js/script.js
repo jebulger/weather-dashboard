@@ -1,5 +1,6 @@
 var searchButton = document.getElementById('search-button');
 var userInput = document.getElementById('user-input')
+var searchHistory = document.getElementById('search-history');
 
 // Id selectors for the elements that make up the card of the current day's weather
 var currentCityName = document.getElementById('current-city');
@@ -48,6 +49,18 @@ var lon;
 
 var cityForecast = {}
 var weatherToday = {}
+
+var searchHistory = localStorage.getItem('city');
+
+// if (searchHistory !== undefined) {
+//     var 
+// }
+
+// function localStorageToPage() {
+//     for (i = 0; i < searchHistory.length; i++) {
+
+//     }
+// }
 
 // Checks to make sure a city was entered and begins to get the coordinates if so
 function submitSearch(event) {
