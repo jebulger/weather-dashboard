@@ -50,6 +50,12 @@ var lon;
 var cityForecast = {}
 var weatherToday = {}
 
+var weatherDataEl = document.getElementById('weather-data');
+var forecastContainerEl = document.getElementById('forecast-container');
+
+weatherDataEl.classList.add('hidden');
+forecastContainerEl.classList.add('hidden');
+
 // Rendering search history upon page load 
 historyToList();
 
@@ -209,6 +215,8 @@ function renderDataToPage() {
     forecast5Temp.textContent = 'Temp: ' + cityForecast.list[38].main.temp + ' °F';
     forecast5Wind.textContent = 'Wind: ' + cityForecast.list[38].wind.speed + ' MPH';
     forecast5Humidity.textContent = 'Humidity: ' + cityForecast.list[38].main.humidity + ' %';
+    weatherDataEl.classList.remove('hidden');
+    forecastContainerEl.classList.remove('hidden');
     historyToList();
 }
 
