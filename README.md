@@ -3,7 +3,7 @@
 ## About
 This project began with the goal of creating a weather application that would display current and accurate weather data when searching for a city. Especially while traveling, it is a good idea to plan out your schedule around the weather. This app will let you search for a city, bring up that city's current weather, and show a five day forecast as well. The project makes API calls to the Open Weather API to obtain that information and generate it onto the page.
 
-While building the app, I learned how to use fetch in order to make the Open Weather API call. I also became more familiar with how to read through API documentation, as I had to read the Open Weather API's documentation in order to figure out how it can even be used.
+While building the app, I learned how to use fetch in order to make the Open Weather API call. I also became more familiar with how to read through API documentation, as I had to read the Open Weather API's documentation to figure out how it can even be used.
 
 ## Table of Contents
 - [Installation](#installation)
