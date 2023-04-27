@@ -41,6 +41,7 @@ var forecast5Temp = document.getElementById('temp-5');
 var forecast5Wind = document.getElementById('wind-5')
 var forecast5Humidity = document.getElementById('humidity-5');
 
+// API key and base url
 var weatherApiKey = '503191814aab7688ab7d586c6bfbd8b6';
 var geocodingURL = 'https://api.openweathermap.org/data/2.5/forecast?q=';
 
@@ -227,6 +228,7 @@ function renderDataToPage() {
     weatherDataEl.classList.remove('hidden');
     forecastContainerEl.classList.remove('hidden');
     
+    // Regenerating the search history list to include the most recent search
     historyToList();
 }
 
