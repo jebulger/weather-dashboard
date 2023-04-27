@@ -1,3 +1,4 @@
+// Id selectors for search button, input area, and the previous search ul
 var searchButton = document.getElementById('search-button');
 var userInput = document.getElementById('user-input')
 var previousSearches = document.getElementById('search-history');
@@ -53,6 +54,8 @@ var weatherToday = {}
 var weatherDataEl = document.getElementById('weather-data');
 var forecastContainerEl = document.getElementById('forecast-container');
 
+// Given a class of hidden on page load, this class gets removed once the weather data
+// is generated onto the page
 weatherDataEl.classList.add('hidden');
 forecastContainerEl.classList.add('hidden');
 
@@ -89,7 +92,8 @@ function historyToList() {
 }
 
 // Function to perform an alternate search when the search history buttons are selected
-// Skips over the submit search and
+// Skips over the submit search and grabs the city name from the button
+// Then plugs that name into the get coordinates function
 function altSearch(searchValue) {
     chosenCity = searchValue;
     getCoordinates();
@@ -116,6 +120,7 @@ function submitSearch(event) {
 }
 
 // Function to get coordinates from geocoding API based on user input
+// Takes in the typed in city name and finds the lattitude and longitude of that city
 function getCoordinates() {
     var geocodeApiCall = geocodingURL + chosenCity + '&appid=' + weatherApiKey;
 
@@ -135,6 +140,8 @@ function getCoordinates() {
 }
 
 // Function to call the weather api using coordinates passed from the getCoordinates() function
+// Lattitude and longitude are passed into the api call for the current weather data
+// and the forecast data as well
 function getWeatherApi() {
     var currentWeatherUrl = 'https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&appid=' + weatherApiKey + '&units=imperial';
     var currentForecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + weatherApiKey + '&units=imperial';
@@ -215,8 +222,11 @@ function renderDataToPage() {
     forecast5Temp.textContent = 'Temp: ' + cityForecast.list[38].main.temp + ' °F';
     forecast5Wind.textContent = 'Wind: ' + cityForecast.list[38].wind.speed + ' MPH';
     forecast5Humidity.textContent = 'Humidity: ' + cityForecast.list[38].main.humidity + ' %';
+    
+    // Removing the hidden classes, revealing the generated weather data
     weatherDataEl.classList.remove('hidden');
     forecastContainerEl.classList.remove('hidden');
+    
     historyToList();
 }
 
@@ -226,11 +236,14 @@ function renderDataToPage() {
 function unixConversion(unixTime) {
     var date = new Date(unixTime * 1000);
 
-    var month = date.getMonth() + 1;
     var day = date.getDate();
+    var month = date.getMonth() + 1;
     var year = date.getFullYear();
 
-    var formattedDate = `${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}-${year}`;
+    day = day.toString().padStart(2, '0')
+    month = month.toString().padStart(2, '0');
+
+    var formattedDate = month + '-' + day + '-' + year;
 
     return formattedDate;
 }
